@@ -1,0 +1,46 @@
+{
+  "data": {
+    "user": {
+      "locations": {
+        "dOzypsJoYPQWCYPcIrIVW": {
+          "lat": 1,
+          "lng": 2
+        }
+      },
+      "users": {
+        "user@user.com": {
+          "email": "user@user.com",
+          "name": "user 1234",
+          "locationsIndexes": {
+            "dOzypsJoYPQWCYPcIrIVW": true
+          }
+        },
+        "abc@abc.com": {
+          "email": "abc@abc.com",
+          "name": "abc",
+          "locationsIndexes": {}
+        }
+      }
+    },
+    "user1": {
+      "locations": {},
+      "users": {}
+    },
+    "user2": {
+      "locations": {},
+      "users": {}
+    }
+  },
+  "users": {
+    "user": {
+      "password": "1234",
+      "name": "Test User"
+    },
+    "user1": {
+      "password": "12345"
+    },
+    "user2": {
+      "password": "12345"
+    }
+  }
+}
