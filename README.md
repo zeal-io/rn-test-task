@@ -5,6 +5,7 @@
 - candidate may use any libs they wish.
 - candidate may build for one platform ios or android ( just please mention which platform we should test on when submitting the task).
 - you need to navigate into the `test-api` and execute either `yarn start` or `yarn dev`.
+- the dev server will be available at `http://localhost:3000`
 - if you have any questions please contact me, I'll try to help out as soon as possible.
 - Please don't try to fork, submit PRs or creae any issues on the github repo.
 - Task submission should be a link to a repo on your github account.
