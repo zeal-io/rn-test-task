@@ -1,6 +1,6 @@
 # Test Task.
 
-> For you convenience We will only test the app on the IOS simulator.
+> PS: We will only test the app on the IOS simulator.
 
 [Deisgn](https://excalidraw.com/#json=0CjQItfIb4QhikAgV6l24,s1vc1m5913MTjUxzc8Dpug)
 
