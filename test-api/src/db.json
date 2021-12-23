@@ -29,6 +29,60 @@
     "user2": {
       "locations": {},
       "users": {}
+    },
+    "user@user.com": {
+      "locations": {
+        "3vffufRMGnhyXJU4vRRtI": {
+          "lat": 1,
+          "lng": 2
+        },
+        "57_wOvKyPxD6oBTA7ciac": {
+          "lat": 1,
+          "lng": 2
+        },
+        "feCQItTlcGtw4d-pEHCET": {
+          "lat": 1,
+          "lng": 2
+        },
+        "stAfndZ3TCBe76fmf81Op": {
+          "lat": 3,
+          "lng": 22
+        },
+        "srUt6n_toFvcbGHdGTykC": {
+          "lat": 22,
+          "lng": 22
+        }
+      },
+      "users": {
+        "testuser1@email.com": {
+          "name": "test user 1",
+          "email": "testuser1@email.com",
+          "locationsIndexes": {}
+        },
+        "testuser2@email.com": {
+          "name": "test user 2 edited",
+          "email": "testuser2@email.com",
+          "locationsIndexes": {
+            "3vffufRMGnhyXJU4vRRtI": true
+          }
+        },
+        "testuser3@email.com": {
+          "name": "test user 3",
+          "email": "testuser3@email.com",
+          "locationsIndexes": {
+            "57_wOvKyPxD6oBTA7ciac": true
+          }
+        },
+        "testuser4@email.com": {
+          "name": "test user 4",
+          "email": "testuser4@email.com",
+          "locationsIndexes": {
+            "feCQItTlcGtw4d-pEHCET": true,
+            "stAfndZ3TCBe76fmf81Op": true,
+            "srUt6n_toFvcbGHdGTykC": true
+          }
+        }
+      }
     }
   },
   "users": {
@@ -40,6 +94,9 @@
       "password": "12345"
     },
     "user2": {
+      "password": "12345"
+    },
+    "user@user.com": {
       "password": "12345"
     }
   }

@@ -167,8 +167,15 @@ export const root: FastifyPluginAsync = async (fastify): Promise<void> => {
       res.status(401).send({ error: authInfo.error })
     }
 
+    const locations = Object.entries(db.data[authInfo?.email]?.locations ?? {}).map(([id, location]) => {
+      return {
+        ...location,
+        id,
+      }
+    })
+
     res.send({
-      locations: Object.values(db.data[authInfo.email!].locations),
+      locations,
     })
   })
 
@@ -210,7 +217,10 @@ export const root: FastifyPluginAsync = async (fastify): Promise<void> => {
 
     const ids = Object.keys(db.data[authInfo.email!].users[userEmail].locationsIndexes ?? {})
 
-    const locations = ids.map(id => db.data[authInfo.email!].locations[id])
+    const locations = ids.map(id => ({
+      ...db.data[authInfo.email!].locations[id],
+      id,
+    }))
 
     res.send({
       locations: Object.values(locations),
