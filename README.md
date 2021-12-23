@@ -1,6 +1,13 @@
 # Test Task.
 
-> PS: We will only test the app on the IOS simulator.
+## Description
+
+- candidate may use any libs they wish.
+- candidate may build for one platform ios or android ( just please mention which platform we should test on when submitting the task).
+- you need to navigate into the `test-api` and execute either `yarn start` or `yarn dev`.
+- if you have any questions please contact me, I'll try to help out as soon as possible.
+- Please don't try to fork, submit PRs or creae any issues on the github repo.
+- Task submission should be a link to a repo on your github account.
 
 [Deisgn](https://excalidraw.com/#json=0CjQItfIb4QhikAgV6l24,s1vc1m5913MTjUxzc8Dpug)
 
