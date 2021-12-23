@@ -32,12 +32,15 @@ returns: {token: string}
 
 ```ts
 GET `/user`
+Headers: { token: string }
+
 returns {
   users: {name: string, email: string}[]
 }
 
 
 GET `/location` // returns all locations regardless of user
+Headers: { token: string }
 returns {
   locations: {lat: number, lng: number}[]
 }
@@ -47,6 +50,7 @@ returns {
 
 ```ts
   GET `/location/:userEmail`
+  Headers: { token: string }
   returns {
     locations: {lat: number, lng: number}[]
   }
@@ -60,6 +64,7 @@ returns {
 
 ```ts
   POST `/user`
+  Headers: { token: string }
   body {
     locations: {lat: number, lng: number}[]
     name: string
@@ -67,6 +72,7 @@ returns {
   }
 
   PATCH `/user/:userEmail`
+  Headers: { token: string }
   {
     locations: {lat: number, lng: number}[]
     name: string
@@ -80,5 +86,6 @@ returns {
 
 ```ts
   POST `/location/:userEmail`
+  Headers: { token: string }
   body: {lat: number, lng: number }
 ```
