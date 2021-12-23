@@ -1,44 +1,42 @@
 # Test Task.
 
-[Deisgn](http://excalidraw.com/#json=Tu34V3HojSdeexHCxoWQ4,w_fLIP95jjEQ1JnjtnACCQ)
+[Deisgn](https://excalidraw.com/#json=0CjQItfIb4QhikAgV6l24,s1vc1m5913MTjUxzc8Dpug)
 
 Descriptions:
 
-> givent he design above, create a React native app that have the following screens.
+> given he design above, create a React native app that have the following screens.
 
-- Auth Screen
-  > this is the screen the logged out user should land on. the screen has 2 tabs login & register, if the user had previously logged in the login tab should be selected, otherwise we should select the register tab by default. use the following end points to register / login
+## Auth Screen
+
+> the screen allows the user to login & register, once the user is logged in or register, they should be navigated to The Users Screen & their login status should be persisted.
 
 ```ts
-POST '/register'
+POST `/register`
 body:    { email: string; password: string; name?: string }
 returns: {token: string}
 
 
-POST '/login'
+POST `/login`
 body:    { email: string; password: string;}
 returns: {token: string}
 ```
 
-- Tabbar Screen / Navigator
+## User List Screen
 
-  > the tabbar has 2 tabs Users & Locations.
-
-  ```ts
-  GET '/user'
-  returns {
-    users: {name: string, email: string}[]
-  }
+```ts
+GET `/user`
+returns {
+  users: {name: string, email: string}[]
+}
 
 
-  GET '/location' // returns all locations regardless of user
-  returns {
-    locations: {lat: number, lng: number}[]
-  }
-  ```
+GET `/location` // returns all locations regardless of user
+returns {
+  locations: {lat: number, lng: number}[]
+}
+```
 
-- User Details screen
-  > display user basic info , ability to assosiate a loction to the user, list user locations
+## User Details screen
 
 ```ts
   GET `/location/:userEmail`
@@ -46,15 +44,12 @@ returns: {token: string}
     locations: {lat: number, lng: number}[]
   }
 
-  POST `/location/:userEmail`
-  body: {lat: number, lng: number }
-
-
   DELETE `/location/:locationId`
 ```
 
-- Add User
-  > absility to add a user & assosiate loctions to him, after the user is created we should navigate back to an appropriate screen.
+## Add / Edit User
+
+> the screen allows the user to add / edit user, you should use the same screen / component for both functionality, ability to add location should be removed when editing a user.
 
 ```ts
   POST `/user`
@@ -63,10 +58,20 @@ returns: {token: string}
     name: string
     email: string
   }
+
+  PATCH `/user/:userEmail`
+  {
+    locations: {lat: number, lng: number}[]
+    name: string
+    email: string
+  }
 ```
 
+## Add Location Screen
 
-- Add Location Screen
-> ability to assosiate a location to a certain user.
+> You can Navigate to this screen from the User Details screen as well as from the Add User screen, if the user is navigated from the user details screen, the screen is responsible for making the http request to add a loction, if the user is navigated from the Add user screen, it is not responsible for creating the location because there is no user to associate the location to, the Add screen will handle the location creating along with the user creation.
 
-TODO
+```ts
+  POST `/location/:userEmail`
+  body: {lat: number, lng: number }
+```
