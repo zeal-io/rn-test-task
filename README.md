@@ -1,10 +1,10 @@
 # Test Task.
 
+> For you convenience We will only test the app on the IOS simulator.
+
 [Deisgn](https://excalidraw.com/#json=0CjQItfIb4QhikAgV6l24,s1vc1m5913MTjUxzc8Dpug)
 
-Descriptions:
-
-> given he design above, create a React native app that have the following screens.
+**given he design above, create a React native app that have the following screens.**
 
 ## Auth Screen
 
