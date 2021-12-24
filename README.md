@@ -90,3 +90,37 @@ returns {
   Headers: { token: string }
   body: {lat: number, lng: number }
 ```
+
+To Delete a location
+
+```ts
+DELETE`/location/:locationId`
+Headers: {
+  token: string
+}
+```
+
+to get users locations
+
+```ts
+GET`/location/:userId`
+Headers: {
+  token: string
+}
+```
+
+
+to delete a user
+
+```ts
+DELETE`/user/:userId`
+Headers: {
+  token: string
+}
+```
+
+
+I'll also include this insomnia backup file for you to use as a reference & also test with.
+- download insomnia from https://insomnia.rest/
+- import the file
+
