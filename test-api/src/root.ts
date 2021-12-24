@@ -64,6 +64,7 @@ export const root: FastifyPluginAsync = async (fastify): Promise<void> => {
     })
   })
 
+  // create user
   fastify.post<{ Headers: { token: string }; Body: { locations: Location[] } & Omit<Person, "locationsIndexes"> }>("/user", async (req, res) => {
     const { token } = req.headers
     const authInfo = authenticateUser(token)
@@ -96,7 +97,6 @@ export const root: FastifyPluginAsync = async (fastify): Promise<void> => {
     }
 
     persistDB()
-
     return {
       success: true,
     }
