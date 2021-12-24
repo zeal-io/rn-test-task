@@ -120,7 +120,8 @@ Headers: {
 ```
 
 
-I'll also include this insomnia backup file for you to use as a reference & also test with.
+I've also included an insomnia backup file for you to use as a reference.
+- make sure to update the header token accordingly. 
 - download insomnia from https://insomnia.rest/
 - import the file
 
