@@ -9,6 +9,7 @@
 - if you have any questions please contact me, I'll try to help out as soon as possible.
 - Please don't try to fork, submit PRs or creae any issues on the github repo.
 - Task submission should be a link to a repo on your github account.
+- please keep in mind that registered users are different from users who you create inside of the app.i
 
 [Deisgn](https://excalidraw.com/#json=0CjQItfIb4QhikAgV6l24,s1vc1m5913MTjUxzc8Dpug)
 
@@ -103,7 +104,7 @@ Headers: {
 to get users locations
 
 ```ts
-GET`/location/:userId`
+GET`/location/:userEmail`
 Headers: {
   token: string
 }
@@ -113,7 +114,7 @@ Headers: {
 to delete a user
 
 ```ts
-DELETE`/user/:userId`
+DELETE`/user/:userEmail`
 Headers: {
   token: string
 }
@@ -121,7 +122,7 @@ Headers: {
 
 
 I've also included an insomnia backup file for you to use as a reference.
-- make sure to update the header token accordingly. 
+- make sure to update the header token accordingly.
 - download insomnia from https://insomnia.rest/
 - import the file
 
