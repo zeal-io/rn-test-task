@@ -73,7 +73,7 @@ export const root: FastifyPluginAsync = async (fastify): Promise<void> => {
       res.status(401).send({ error: authInfo.error })
     }
 
-    const { locations, ...person } = req.body
+    const { locations = [], ...person } = req.body
 
     if (!person.email || !person.name) {
       res.status(400).send({ error: "Invalid person" })
@@ -83,17 +83,16 @@ export const root: FastifyPluginAsync = async (fastify): Promise<void> => {
       res.status(400).send({ error: "User already exists" })
     }
 
-    const ids =
-      locations?.reduce((acc: Record<string, true>, location) => {
-        const id = nanoid()
-        acc[id] = true
-        db.data[authInfo.email!].locations[id] = location
-        return acc
-      }, {}) ?? {}
+    const ids = locations.reduce((acc: Record<string, true>, location) => {
+      const id = nanoid()
+      acc[id] = true
+      db.data[authInfo.email!].locations[id] = location
+      return acc
+    }, {})
 
     db.data[authInfo.email!].users[person.email] = {
       ...person,
-      locationsIndexes: ids,
+      locationsIndexes: ids ?? {},
     }
 
     persistDB()
@@ -145,10 +144,11 @@ export const root: FastifyPluginAsync = async (fastify): Promise<void> => {
       res.status(400).send({ error: "No Such User" })
     }
 
-    Object.keys(user.locationsIndexes).forEach(id => {
+    Object.keys(user.locationsIndexes ?? {}).forEach(id => {
       delete db.data[authInfo.email!].locations[id]
     })
 
+    // db.data[authInfo.email!].users[email] = undefined
     delete db.data[authInfo.email!].users[email]
 
     persistDB()
