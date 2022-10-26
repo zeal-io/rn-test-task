@@ -2,15 +2,22 @@
   "name": "api",
   "version": "1.0.0",
   "main": "src/app.ts",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon --exec ts-node src/app.ts",
-    "build": "tsc",
+    "build": "tsup src/app.ts --format cjs",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "dev": "tsup src/app.ts --format cjs --watch --onSuccess \"node dist/app.cjs\"",
+    "lint": "tsc --noEmit && TIMING=1 eslint src/**/*.ts* --fix",
     "start": "node dist/app.js"
   },
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "4.5.0",
     "fastify": "^3.25.1",
-    "nanoid": "^3.1.30"
+    "lowdb": "^5.0.5",
+    "nanoid": "^3.1.30",
+    "sqlite3": "^5.1.2",
+    "tsup": "^6.2.3"
   },
   "devDependencies": {
     "@types/node": "^17.0.2",
@@ -18,6 +25,7 @@
     "concurrently": "^6.5.1",
     "fastify-tsconfig": "^1.0.1",
     "nodemon": "^2.0.15",
+    "prisma": "4.5.0",
     "tap": "^15.1.5",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.4"

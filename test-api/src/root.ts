@@ -1,283 +1,235 @@
+import { Admin } from "@prisma/client"
 import { FastifyPluginAsync } from "fastify"
-import { nanoid } from "nanoid"
-import { authenticateUser, db, Location, persistDB, Person, SEPERATOR } from "./utils"
+import { prisma } from "./utils"
+
+const SEPERATOR = ";;;;....;;;;"
+
+function getToken(admin: Admin) {
+  return `${admin.email}${SEPERATOR}${admin.password}`
+}
+
+function getEmailFromToken(token: string) {
+  return token.split(SEPERATOR)[0]
+}
 
 export const root: FastifyPluginAsync = async (fastify): Promise<void> => {
-  fastify.post<{ Body: { email: string; password: string; name: string } }>("/register", async (req, res) => {
+  fastify.post<Register>("/register", async (req, res) => {
     const { email, password, name } = req.body
 
     if (!email || !password) {
       res.status(400).send({ error: "Missing info" })
     }
 
-    if (db.users[email]) {
+    if (password.length < 8) {
+      res.status(400).send({ error: "password too short" })
+    }
+
+    if (await prisma.admin.findFirst({ where: { email } })) {
       res.status(400).send({ error: "User already exists" })
       return
     }
 
-    if (password.includes(SEPERATOR)) {
-      res.status(400).send({ error: "Invalid Password" })
-      return
-    }
-
-    db.users[email] = { password, name }
-
-    db.data[email] = {
-      locations: {},
-      users: {},
-    }
-
-    persistDB()
-
-    res.send({
-      token: `${email}${SEPERATOR}${password}`,
+    const admin = await prisma.admin.create({
+      data: { email, password, name },
     })
+
+    res.send({ token: getToken(admin) })
   })
 
-  fastify.post<{ Body: { email: string; password: string } }>("/login", async (req, res) => {
+  fastify.post<Login>("/login", async (req, res) => {
     const { email, password } = req.body
 
-    console.log(email, password)
-    if (!db.users[email] || db.users[email].password !== password) {
+    const admin = await prisma.admin.findFirst({ where: { email } })
+
+    if (!admin || admin.password !== password) {
       return res.status(401).send({ error: "Invalid credentials" })
     }
 
     res.send({
-      token: `${email}${SEPERATOR}${password}`,
+      token: getToken(admin),
     })
   })
 
-  fastify.get<{ Headers: { token: string } }>("/user", async (req, res) => {
+  fastify.get<GetUser>("/user", async (req, res) => {
     const { token } = req.headers
 
-    const authInfo = authenticateUser(token)
+    const email = getEmailFromToken(token)
+    const admin = await prisma.admin.findFirst({ where: { email }, include: { users: true } })
 
-    if (authInfo.error) {
-      return res.status(401).send({ error: authInfo.error })
+    if (!admin?.id) {
+      return res.status(401).send({})
     }
 
     res.send({
-      users: Object.values(db.data[authInfo.email!]?.users ?? {}).map(x => {
-        delete x.locationsIndexes
-        return x
-      }),
+      users: admin.users ?? [],
     })
   })
 
-  // create user
-  fastify.post<{ Headers: { token: string }; Body: { locations: Location[] } & Omit<Person, "locationsIndexes"> }>("/user", async (req, res) => {
+  fastify.post<CreateUser>("/user", async (req, res) => {
     const { token } = req.headers
-    const authInfo = authenticateUser(token)
-
-    if (authInfo.error) {
-      res.status(401).send({ error: authInfo.error })
-    }
-
     const { locations = [], ...person } = req.body
 
+    const email = getEmailFromToken(token)
+    const admin = await prisma.admin.findFirst({ where: { email }, include: { users: true } })
+
+    if (!admin?.id) {
+      return res.status(401).send({})
+    }
+
     if (!person.email || !person.name) {
-      res.status(400).send({ error: "Invalid person" })
+      res.status(400).send({ error: "Invalid User" })
     }
 
-    if (db.data[authInfo.email!].users[person.email]) {
-      res.status(400).send({ error: "User already exists" })
-    }
-
-    const ids = locations.reduce((acc: Record<string, true>, location) => {
-      const id = nanoid()
-      acc[id] = true
-      db.data[authInfo.email!].locations[id] = location
-      return acc
-    }, {})
-
-    db.data[authInfo.email!].users[person.email] = {
-      ...person,
-      locationsIndexes: ids ?? {},
-    }
-
-    persistDB()
-    return {
-      success: true,
-    }
-  })
-
-  fastify.patch<{ Headers: { token: string }; Body: Omit<Person, "locationsIndexes">; Params: { email: string } }>("/user/:email", async (req, res) => {
-    const { token } = req.headers
-    const authInfo = authenticateUser(token)
-
-    if (authInfo.error) {
-      res.status(401).send({ error: authInfo.error })
-    }
-
-    const { email } = req.params
-    const person = req.body
-
-    if (!db.data[authInfo.email!].users[email]) {
-      res.status(400).send({ error: "No Such User" })
-    }
-
-    db.data[authInfo.email!].users[email] = {
-      ...db.data[authInfo.email!].users[email],
-      name: person.name || db.data[authInfo.email!].users[email].name,
-      email: person.email || email,
-    }
-
-    persistDB()
-    return {
-      success: true,
-    }
-  })
-
-  fastify.delete<{ Params: { email: string }; Headers: { token: string } }>("/user/:email", async (req, res) => {
-    const { token } = req.headers
-    const authInfo = authenticateUser(token)
-
-    if (authInfo.error) {
-      res.status(401).send({ error: authInfo.error })
-    }
-
-    const { email } = req.params
-
-    const user = db.data[authInfo.email!].users[email]
-
-    if (!user) {
-      res.status(400).send({ error: "No Such User" })
-    }
-
-    Object.keys(user.locationsIndexes ?? {}).forEach(id => {
-      delete db.data[authInfo.email!].locations[id]
+    const user = await prisma.user.create({
+      data: {
+        email: person.email,
+        name: person.name,
+        adminId: admin.id,
+        locations: {
+          create: locations.map(l => ({
+            lat: l.lat.toString(),
+            lng: l.lat.toString(),
+          })),
+        },
+      },
+      include: { locations: true },
     })
 
-    // db.data[authInfo.email!].users[email] = undefined
-    delete db.data[authInfo.email!].users[email]
+    return {
+      user,
+    }
+  })
 
-    persistDB()
+  fastify.patch<EditUser>("/user/:email", async (req, res) => {
+    const { token } = req.headers
+    const email = getEmailFromToken(token)
+    const admin = await prisma.admin.findFirst({ where: { email } })
+
+    if (!admin?.id) {
+      return res.status(401).send({})
+    }
+
+    const user = await prisma.user.update({
+      where: { email: req.params.email },
+      data: { email: req.body.email, name: req.body.name },
+    })
+
+    res.send({ user })
+  })
+
+  fastify.delete<DeleteUser>("/user/:email", async (req, res) => {
+    const { token } = req.headers
+    const email = getEmailFromToken(token)
+    const admin = await prisma.admin.findFirst({ where: { email } })
+
+    if (!admin?.id) {
+      return res.status(401).send({})
+    }
+
+    await prisma.user.delete({ where: { email: req.params.email } })
+
+    return { ok: true }
+  })
+
+  fastify.get<GetAllLocations>("/location", async (req, res) => {
+    const { token } = req.headers
+
+    const email = getEmailFromToken(token)
+    const admin = await prisma.admin.findFirst({ where: { email } })
+
+    if (!admin?.id) {
+      return res.status(401).send({})
+    }
+
+    const locations = await prisma.location.findMany({ where: { User: { adminId: admin.id } } })
 
     return {
-      success: true,
+      locations: locations ?? [],
     }
   })
 
-  fastify.get<{ Headers: { token: string } }>("/location", async (req, res) => {
+  fastify.post<AddLocation>("/location/:userEmail", async (req, res) => {
     const { token } = req.headers
-
-    const authInfo = authenticateUser(token)
-
-    if (authInfo.error) {
-      res.status(401).send({ error: authInfo.error })
-    }
-
-    const locations = Object.entries(db.data[authInfo?.email]?.locations ?? {}).map(([id, location]) => {
-      return {
-        ...location,
-        id,
-      }
-    })
-
-    res.send({
-      locations,
-    })
-  })
-
-  fastify.post<{ Headers: { token: string }; Params: { userEmail: string }; Body: { lat: number; lng: number } }>("/location/:userEmail", async (req, res) => {
-    const { token } = req.headers
-
-    const authInfo = authenticateUser(token)
-
-    if (authInfo.error) {
-      res.status(401).send({ error: authInfo.error })
-    }
-
-    const { userEmail } = req.params
     const { lat, lng } = req.body
 
-    const id = nanoid()
+    const email = getEmailFromToken(token)
+    const admin = await prisma.admin.findFirst({ where: { email } })
 
-    db.data[authInfo.email!].locations[id] = { lat, lng }
-
-    db.data[authInfo.email!].users[userEmail].locationsIndexes[id] = true
-
-    persistDB()
-
-    res.send({
-      success: true,
-    })
-  })
-
-  fastify.get<{ Headers: { token: string }; Params: { userEmail: string } }>("/location/:userEmail", async (req, res) => {
-    const { token } = req.headers
-
-    const authInfo = authenticateUser(token)
-
-    if (authInfo.error) {
-      res.status(401).send({ error: authInfo.error })
+    if (!admin?.id) {
+      return res.status(401).send({})
     }
 
+    await prisma.user.update({
+      where: { email: req.params.userEmail },
+      data: {
+        locations: {
+          create: {
+            lat: lat.toString(),
+            lng: lng.toString(),
+          },
+        },
+      },
+    })
+
+    return {}
+  })
+
+  fastify.get<GetLocations>("/location/:userEmail", async (req, res) => {
+    const { token } = req.headers
     const { userEmail } = req.params
 
-    const ids = Object.keys(db.data[authInfo.email!].users[userEmail].locationsIndexes ?? {})
+    const email = getEmailFromToken(token)
+    const admin = await prisma.admin.findFirst({ where: { email } })
 
-    const locations = ids.map(id => ({
-      ...db.data[authInfo.email!].locations[id],
-      id,
-    }))
-
-    res.send({
-      locations: Object.values(locations),
-    })
-  })
-
-  fastify.patch<{ Params: { locationId: string }; Headers: { token: string }; Body: { lat: string; lng: string } }>("/location/:locationId", async (req, res) => {
-    const { token } = req.headers
-
-    const authInfo = authenticateUser(token)
-
-    if (authInfo.error) {
-      res.status(401).send({ error: authInfo.error })
+    if (!admin?.id) {
+      return res.status(401).send({})
     }
 
+    const user = await prisma.user.findFirst({ where: { email: userEmail }, include: { locations: true } })
+
+    return {
+      locations: user?.locations ?? [],
+    }
+  })
+
+  fastify.patch<PatchLocation>("/location/:locationId", async (req, res) => {
+    const { token } = req.headers
     const { locationId } = req.params
     const { lat, lng } = req.body
 
-    if (!db.data[authInfo.email!].locations[locationId]) {
-      res.status(400).send({ error: "No Such Location" })
+    const email = getEmailFromToken(token)
+    const admin = await prisma.admin.findFirst({ where: { email } })
+
+    if (!admin?.id) {
+      return res.status(401).send({})
     }
 
-    db.data[authInfo.email!].locations[locationId] = { lat: parseFloat(lat), lng: parseFloat(lng) }
-
-    persistDB()
-
-    res.send({
-      success: true,
+    const location = await prisma.location.update({
+      where: { id: locationId },
+      data: { lat, lng },
     })
+
+    return { location }
   })
 
-  fastify.delete<{ Headers: { token: string }; Params: { locationId: string } }>("/location/:locationId", async (req, res) => {
+  fastify.delete<DeleteLocation>("/location/:locationId", async (req, res) => {
     const { token } = req.headers
+    const email = getEmailFromToken(token)
+    const admin = await prisma.admin.findFirst({ where: { email } })
 
-    const authInfo = authenticateUser(token)
-
-    if (authInfo.error) {
-      res.status(401).send({ error: authInfo.error })
+    if (!admin?.id) {
+      return res.status(401).send({})
     }
 
-    const { locationId } = req.params
-
-    if (!db.data[authInfo.email!].locations[locationId]) {
-      res.status(400).send({ error: "No Such Location." })
-    }
-
-    delete db.data[authInfo.email!].locations[locationId]
-
-    Object.keys(db.data[authInfo.email!].users).forEach(user => {
-      const { locationsIndexes } = db.data[authInfo.email!].users[user]
-      delete locationsIndexes[locationId]
+    const location = await prisma.location.delete({
+      where: { id: req.params.locationId },
     })
 
-    persistDB()
-
-    res.send({
-      success: true,
-    })
+    return { location }
   })
 }
+
+
+
+
+
