@@ -202,7 +202,10 @@ var root = async (fastify) => {
 var server = (0, import_fastify.default)({});
 var start = async () => {
   await root(server, {});
-  await server.listen(3e3);
+  await server.listen({
+    host: "0.0.0.0",
+    port: 3e3
+  });
   console.log("running on port 3000");
 };
 start();
