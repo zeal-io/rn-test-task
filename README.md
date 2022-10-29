@@ -2,32 +2,33 @@
 
 ## Description
 
-- candidate may use any libs they wish.
-- candidate may build for one platform ios or android ( just please mention which platform we should test on when submitting the task).
-- you need to navigate into the `test-api` and run `yarn start`
-- the dev server will be available at `http://localhost:3000`
-- if you have any questions please contact me, I'll try to help out as soon as possible.
-- Please don't try to fork, submit PRs or creae any issues on the github repo.
-- Task submission should be a link to a repo on your github account.
-- please keep in mind that registered users are different from users who you create inside of the app.i
-
 [Deisgn](https://excalidraw.com/#json=0CjQItfIb4QhikAgV6l24,s1vc1m5913MTjUxzc8Dpug)
+
+[API base url](http://ec2-44-204-28-7.compute-1.amazonaws.com:3000)
+
+### candidate needs to use typescript and react query, you may use other libs as needed.
 
 **given he design above, create a React native app that have the following screens.**
 
-## Auth Screen
+## Auth Screens
 
-> the screen allows the user to login & register, once the user is logged in or register, they should be navigated to The Users Screen & their login status should be persisted.
+> the screens allows the admin to login / register, once the user is logged in **or** register, they should be navigated to The Users Screen & their login status should be persisted.
 
 ```ts
 POST `/register`
-body:    { email: string; password: string; name?: string }
-returns: {token: string}
+body:    { email: string; password: string; name: string }
+returns: {
+  token: string,
+  admin: { email: string; name: string }
+ }
 
 
 POST `/login`
 body:    { email: string; password: string;}
-returns: {token: string}
+returns: {
+  token: string,
+  admin: { email: string; name: string }
+ }
 ```
 
 ## User List Screen
@@ -40,8 +41,7 @@ returns {
   users: {name: string, email: string}[]
 }
 
-
-GET `/location` // returns all locations regardless of user
+GET `/location` //- GEt all locations regardless of the user
 Headers: { token: string }
 returns {
   locations: {lat: number, lng: number}[]
@@ -118,9 +118,3 @@ Headers: {
   token: string
 }
 ```
-
-I've also included an insomnia backup file for you to use as a reference.
-
-- make sure to update the header token accordingly.
-- download insomnia from https://insomnia.rest/
-- import the file

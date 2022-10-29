@@ -48,7 +48,7 @@ var root = async (fastify) => {
     const admin = await prisma.admin.create({
       data: { email, password, name }
     });
-    res.send({ token: getToken(admin) });
+    res.send({ token: getToken(admin), admin: { email, name } });
   });
   fastify.post("/login", async (req, res) => {
     const { email, password } = req.body;
@@ -57,7 +57,8 @@ var root = async (fastify) => {
       return res.status(401).send({ error: "Invalid credentials" });
     }
     res.send({
-      token: getToken(admin)
+      token: getToken(admin),
+      admin: { email: admin.email, name: admin.name }
     });
   });
   fastify.get("/user", async (req, res) => {

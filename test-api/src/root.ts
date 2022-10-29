@@ -33,7 +33,7 @@ export const root: FastifyPluginAsync = async (fastify): Promise<void> => {
       data: { email, password, name },
     })
 
-    res.send({ token: getToken(admin) })
+    res.send({ token: getToken(admin), admin: { email, name } })
   })
 
   fastify.post<Login>("/login", async (req, res) => {
@@ -47,6 +47,7 @@ export const root: FastifyPluginAsync = async (fastify): Promise<void> => {
 
     res.send({
       token: getToken(admin),
+      admin: { email: admin.email, name: admin.name },
     })
   })
 
@@ -228,8 +229,3 @@ export const root: FastifyPluginAsync = async (fastify): Promise<void> => {
     return { location }
   })
 }
-
-
-
-
-
