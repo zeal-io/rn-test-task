@@ -2,7 +2,7 @@
 
 ## Description
 
-[Deisgn](https://excalidraw.com/#json=WBj4x0g9XO3eLyt4xrL22,HPnVzvjotfvXZhxvaxfPSQ)
+[Deisgn](https://excalidraw.com/#json=0LofTzuKo0JWQQ6H9TOJR,3BH3sBYfM2hkxlZgAI-JjQ)
 
 [API base url](http://ec2-44-204-28-7.compute-1.amazonaws.com:3000)
 
@@ -31,7 +31,7 @@ returns: {
  }
 ```
 
-## User List Screen
+## User List Screen / home screen.
 
 ```ts
 GET `/user`
@@ -118,3 +118,13 @@ Headers: {
   token: string
 }
 ```
+
+## Technologies we like
+
+- React Navigation
+- React query
+- typescript
+
+> other than that you should use your fav state managment lib if need be, you also should come up with your own UI, we won't be evaluating the UI as much as the UX.
+
+Best of luck.
