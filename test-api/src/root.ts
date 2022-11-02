@@ -9,7 +9,11 @@ function getToken(admin: Admin) {
 }
 
 function getEmailFromToken(token: string) {
-  return token.split(SEPERATOR)[0]
+  try {
+    return token.split(SEPERATOR)[0]
+  } catch (error) {
+    throw `please login.`
+  }
 }
 
 export const root: FastifyPluginAsync = async (fastify): Promise<void> => {
