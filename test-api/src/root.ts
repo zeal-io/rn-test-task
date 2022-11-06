@@ -49,10 +49,7 @@ export const root: FastifyPluginAsync = async (fastify): Promise<void> => {
       return res.status(401).send({ error: "Invalid credentials" })
     }
 
-    res.send({
-      token: getToken(admin),
-      admin: { email: admin.email, name: admin.name },
-    })
+    res.send({ token: getToken(admin), admin: { email: admin.email, name: admin.name } })
   })
 
   fastify.get<GetUser>("/user", async (req, res) => {
@@ -164,8 +161,9 @@ export const root: FastifyPluginAsync = async (fastify): Promise<void> => {
       return res.status(401).send({})
     }
 
-    await prisma.user.update({
+    const updatedAdmin = await prisma.user.update({
       where: { email: req.params.userEmail },
+      include: { locations: true },
       data: {
         locations: {
           create: {
@@ -176,7 +174,9 @@ export const root: FastifyPluginAsync = async (fastify): Promise<void> => {
       },
     })
 
-    return {}
+    return {
+      locationsCount: updatedAdmin.locations?.length,
+    }
   })
 
   fastify.get<GetLocations>("/location/:userEmail", async (req, res) => {

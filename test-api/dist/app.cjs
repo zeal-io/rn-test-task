@@ -30,7 +30,11 @@ function getToken(admin) {
   return `${admin.email}${SEPERATOR}${admin.password}`;
 }
 function getEmailFromToken(token) {
-  return token.split(SEPERATOR)[0];
+  try {
+    return token.split(SEPERATOR)[0];
+  } catch (error) {
+    throw `please login.`;
+  }
 }
 var root = async (fastify) => {
   fastify.post("/register", async (req, res) => {
@@ -56,10 +60,7 @@ var root = async (fastify) => {
     if (!admin || admin.password !== password) {
       return res.status(401).send({ error: "Invalid credentials" });
     }
-    res.send({
-      token: getToken(admin),
-      admin: { email: admin.email, name: admin.name }
-    });
+    res.send({ token: getToken(admin), admin: { email: admin.email, name: admin.name } });
   });
   fastify.get("/user", async (req, res) => {
     const { token } = req.headers;
@@ -137,6 +138,7 @@ var root = async (fastify) => {
     };
   });
   fastify.post("/location/:userEmail", async (req, res) => {
+    var _a;
     const { token } = req.headers;
     const { lat, lng } = req.body;
     const email = getEmailFromToken(token);
@@ -144,8 +146,9 @@ var root = async (fastify) => {
     if (!(admin == null ? void 0 : admin.id)) {
       return res.status(401).send({});
     }
-    await prisma.user.update({
+    const updatedAdmin = await prisma.user.update({
       where: { email: req.params.userEmail },
+      include: { locations: true },
       data: {
         locations: {
           create: {
@@ -155,7 +158,9 @@ var root = async (fastify) => {
         }
       }
     });
-    return {};
+    return {
+      locationsCount: (_a = updatedAdmin.locations) == null ? void 0 : _a.length
+    };
   });
   fastify.get("/location/:userEmail", async (req, res) => {
     const { token } = req.headers;
