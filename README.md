@@ -4,7 +4,7 @@
 
 [Deisgn](https://excalidraw.com/#json=0LofTzuKo0JWQQ6H9TOJR,3BH3sBYfM2hkxlZgAI-JjQ)
 
-[API base url](http://ec2-44-204-28-7.compute-1.amazonaws.com:3000)
+[API base url](http://54.93.198.17)
 
 ### candidate needs to use typescript and react query, you may use other libs as needed.
 
