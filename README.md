@@ -4,15 +4,17 @@
 
 [Deisgn](https://excalidraw.com/#json=0LofTzuKo0JWQQ6H9TOJR,3BH3sBYfM2hkxlZgAI-JjQ)
 
-[API base url](http://54.93.198.17)
+[API base url](https://aw2zxe2ua5.execute-api.us-east-1.amazonaws.com)
 
-### candidate needs to use typescript and react query, you may use other libs as needed.
+### you need to use typescript and react query, you may use other libs as needed.
 
 **given he design above, create a React native app that have the following screens.**
 
+**Please refer back to the insomnia (postman) JSON file..**
+
 ## Auth Screens
 
-> the screens allows the admin to login / register, once the user is logged in **or** register, they should be navigated to The Users Screen & their login status should be persisted.
+> the screen[s] allows the admin to login / register, once the admin is logged in **or** register, they should be navigated to The Users List Screen & their login status should be **persisted**.
 
 ```ts
 POST `/register`
@@ -41,10 +43,10 @@ returns {
   users: {name: string, email: string}[]
 }
 
-GET `/location` //- GEt all locations regardless of the user
+GET `/location` //- G3t all locations for the users created.
 Headers: { token: string }
 returns {
-  locations: {lat: number, lng: number}[]
+  locations: {lat: string, lng: string}[]
 }
 ```
 
@@ -54,7 +56,7 @@ returns {
   GET `/location/:userEmail`
   Headers: { token: string }
   returns {
-    locations: {lat: number, lng: number}[]
+    locations: {lat: string, lng: string}[]
   }
 
   DELETE `/location/:locationId`
@@ -68,7 +70,7 @@ returns {
   POST `/user`
   Headers: { token: string }
   body {
-    locations: {lat: number, lng: number}[]
+    locations: {lat: string, lng: string}[]
     name: string
     email: string
   }
@@ -76,7 +78,7 @@ returns {
   PATCH `/user/:userEmail`
   Headers: { token: string }
   {
-    locations: {lat: number, lng: number}[]
+    locations: {lat: string, lng: string}[]
     name: string
     email: string
   }
@@ -89,7 +91,7 @@ returns {
 ```ts
   POST `/location/:userEmail`
   Headers: { token: string }
-  body: {lat: number, lng: number }
+  body: {lat: string, lng: string }
 ```
 
 To Delete a location
@@ -121,9 +123,8 @@ Headers: {
 
 ## Technologies we like
 
-- React Navigation
-- React query
 - typescript
+- React query
 
 > other than that you should use your fav state managment lib if need be, you also should come up with your own UI, we won't be evaluating the UI as much as the UX.
 
