@@ -1,8 +1,8 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2024-01-11T12:57:33.210Z",
-  "__export_source": "insomnia.desktop.app:v2022.6.0",
+  "__export_date": "2024-01-13T22:01:40.143Z",
+  "__export_source": "insomnia.desktop.app:v8.5.1",
   "resources": [
     {
       "_id": "req_dde0a8023ec444728f3092203e0e309e",
@@ -17,12 +17,7 @@
       "parameters": [],
       "headers": [
         { "name": "Content-Type", "value": "application/json", "id": "pair_b0a265149f9745cab01fe2e0645c3e12" },
-        {
-          "id": "pair_98bc5618dd1a4e3aab31130f381302b2",
-          "name": "token",
-          "value": "eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw",
-          "description": ""
-        }
+        { "id": "pair_98bc5618dd1a4e3aab31130f381302b2", "name": "token", "value": "tes@test.com;;;;....;;;;password", "description": "" }
       ],
       "authentication": {},
       "metaSortKey": -1648345720541.0625,
@@ -93,6 +88,37 @@
       ],
       "authentication": {},
       "metaSortKey": -1641911433523.8125,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_1ad96ecf328c4278881fffab5366b5bf",
+      "parentId": "wrk_e6e0d0eca2c84d6b8e8f50134e54034b",
+      "modified": 1705182829118,
+      "created": 1705182665977,
+      "url": "https://aw2zxe2ua5.execute-api.us-east-1.amazonaws.com/user/a.eid2@yandex.com",
+      "name": "user/:email",
+      "description": "",
+      "method": "GET",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json", "id": "pair_b0a265149f9745cab01fe2e0645c3e12" },
+        {
+          "id": "pair_98bc5618dd1a4e3aab31130f381302b2",
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1641509290585.2344,
       "isPrivate": false,
       "settingStoreCookies": true,
       "settingSendCookies": true,
@@ -232,9 +258,9 @@
     {
       "_id": "req_0b12c13b3a0c4bd09e2bce504af4139e",
       "parentId": "wrk_e6e0d0eca2c84d6b8e8f50134e54034b",
-      "modified": 1704976124133,
+      "modified": 1705182901617,
       "created": 1704976119983,
-      "url": "https://aw2zxe2ua5.execute-api.us-east-1.amazonaws.com/location/a.eid@yandex.com",
+      "url": "https://aw2zxe2ua5.execute-api.us-east-1.amazonaws.com/location/a.eid3@yandex.com",
       "name": "location/:email",
       "description": "",
       "method": "GET",

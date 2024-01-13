@@ -45,6 +45,14 @@ returns {
   users: {name: string, email: string}[]
 }
 
+GET `/user/:email`
+Headers: { token: string }
+
+returns {
+  user: { name: string, email: string }
+  locations: { lat: string, lng: string }[]
+}
+
 GET `/location` //- G3t all locations for the users created.
 Headers: { token: string }
 returns {
