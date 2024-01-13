@@ -1,1 +1,389 @@
-{"_type":"export","__export_format":4,"__export_date":"2024-01-11T12:57:33.210Z","__export_source":"insomnia.desktop.app:v2022.6.0","resources":[{"_id":"req_dde0a8023ec444728f3092203e0e309e","parentId":"wrk_e6e0d0eca2c84d6b8e8f50134e54034b","modified":1704975350246,"created":1667725486561,"url":"https://i7d1qkxdik.execute-api.us-east-1.amazonaws.com/register","name":"register","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n  \"name\": \"test\",\n\t\"email\": \"testing@testing.com\", \n\t\"password\": \"test1234\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_b0a265149f9745cab01fe2e0645c3e12"},{"id":"pair_98bc5618dd1a4e3aab31130f381302b2","name":"token","value":"tes@test.com;;;;....;;;;password","description":""}],"authentication":{},"metaSortKey":-1648345720541.0625,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"wrk_e6e0d0eca2c84d6b8e8f50134e54034b","parentId":null,"modified":1653171421205,"created":1653171421205,"name":"astore","description":"","scope":"collection","_type":"workspace"},{"_id":"req_79f34bf8e3fd4297884ce67d8a39a2fa","parentId":"wrk_e6e0d0eca2c84d6b8e8f50134e54034b","modified":1704975425306,"created":1667725057855,"url":"https://i7d1qkxdik.execute-api.us-east-1.amazonaws.com/login","name":"login","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"email\": \"testing@testing.com\", \n\t\"password\": \"test1234\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_b0a265149f9745cab01fe2e0645c3e12"},{"id":"pair_98bc5618dd1a4e3aab31130f381302b2","name":"token","value":"","description":""}],"authentication":{},"metaSortKey":-1646737148786.75,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_f9cade355c424aa4b39019e487e7d520","parentId":"wrk_e6e0d0eca2c84d6b8e8f50134e54034b","modified":1704975456297,"created":1667726755554,"url":"https://i7d1qkxdik.execute-api.us-east-1.amazonaws.com/user","name":"user","description":"","method":"GET","body":{"mimeType":"application/json","text":""},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_b0a265149f9745cab01fe2e0645c3e12"},{"id":"pair_98bc5618dd1a4e3aab31130f381302b2","name":"token","value":"eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw","description":""}],"authentication":{},"metaSortKey":-1641911433523.8125,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_29f73b0bf03b46499ab29523e4a45552","parentId":"wrk_e6e0d0eca2c84d6b8e8f50134e54034b","modified":1704977558611,"created":1704975466952,"url":"https://i7d1qkxdik.execute-api.us-east-1.amazonaws.com/user","name":"user","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n  \"name\": \"ahmed4\",\n  \"email\": \"a.eid4@yandex.com\",\n  \"locations\": [\n    { \"lat\": \"1211\", \"lng\": \"1212\" },\n    { \"lat\": \"1123\", \"lng\": \"2114\" }\n  ]\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_b0a265149f9745cab01fe2e0645c3e12"},{"id":"pair_98bc5618dd1a4e3aab31130f381302b2","name":"token","value":"eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw","description":""}],"authentication":{},"metaSortKey":-1641107147646.6562,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_20eab1ea2ba046f2a11ae0771a587c2c","parentId":"wrk_e6e0d0eca2c84d6b8e8f50134e54034b","modified":1704977549885,"created":1704975926654,"url":"https://i7d1qkxdik.execute-api.us-east-1.amazonaws.com/user/a.eid@yandex.com","name":"user/:email","description":"","method":"PATCH","body":{"mimeType":"application/json","text":"{\n  \"name\": \"ahmed22\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_b0a265149f9745cab01fe2e0645c3e12"},{"id":"pair_98bc5618dd1a4e3aab31130f381302b2","name":"token","value":"eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw","description":""}],"authentication":{},"metaSortKey":-1640705004708.0781,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_79360415802c4980b0e4aa191f9059f5","parentId":"wrk_e6e0d0eca2c84d6b8e8f50134e54034b","modified":1704976097854,"created":1704975978897,"url":"https://i7d1qkxdik.execute-api.us-east-1.amazonaws.com/user/a.eid@yandex.com","name":"user/:email","description":"","method":"DELETE","body":{"mimeType":"application/json","text":""},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_b0a265149f9745cab01fe2e0645c3e12"},{"id":"pair_98bc5618dd1a4e3aab31130f381302b2","name":"token","value":"eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw","description":""}],"authentication":{},"metaSortKey":-1640503933238.789,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_31ad62b79cfb447094ef52ede5fcb92b","parentId":"wrk_e6e0d0eca2c84d6b8e8f50134e54034b","modified":1704976104920,"created":1704976076882,"url":"https://i7d1qkxdik.execute-api.us-east-1.amazonaws.com/location","name":"location","description":"","method":"GET","body":{"mimeType":"application/json","text":""},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_b0a265149f9745cab01fe2e0645c3e12"},{"id":"pair_98bc5618dd1a4e3aab31130f381302b2","name":"token","value":"eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw","description":""}],"authentication":{},"metaSortKey":-1640403397504.1445,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_0b12c13b3a0c4bd09e2bce504af4139e","parentId":"wrk_e6e0d0eca2c84d6b8e8f50134e54034b","modified":1704976124133,"created":1704976119983,"url":"https://i7d1qkxdik.execute-api.us-east-1.amazonaws.com/location/a.eid@yandex.com","name":"location/:email","description":"","method":"GET","body":{"mimeType":"application/json","text":""},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_b0a265149f9745cab01fe2e0645c3e12"},{"id":"pair_98bc5618dd1a4e3aab31130f381302b2","name":"token","value":"eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw","description":""}],"authentication":{},"metaSortKey":-1640353129636.8223,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_8b9e10667d0745bd96a78684dd569fa6","parentId":"wrk_e6e0d0eca2c84d6b8e8f50134e54034b","modified":1704977595394,"created":1704977352421,"url":"https://i7d1qkxdik.execute-api.us-east-1.amazonaws.com/location/a.eid@yandex.com","name":"location/:email","description":"","method":"POST","body":{"mimeType":"application/json","text":"{ \"lat\": \"3234\", \"lng\": \"3234\" }\n"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_b0a265149f9745cab01fe2e0645c3e12"},{"id":"pair_98bc5618dd1a4e3aab31130f381302b2","name":"token","value":"eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw","description":""}],"authentication":{},"metaSortKey":-1640327995703.1611,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_acfaeba4c5b746f28c02bb4d1d1c5aaf","parentId":"wrk_e6e0d0eca2c84d6b8e8f50134e54034b","modified":1704977710090,"created":1704977606736,"url":"https://i7d1qkxdik.execute-api.us-east-1.amazonaws.com/location/11","name":"location/:id","description":"","method":"PATCH","body":{"mimeType":"application/json","text":"{ \"lat\": \"2323\", \"lng\": \"2323\" }\n"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_b0a265149f9745cab01fe2e0645c3e12"},{"id":"pair_98bc5618dd1a4e3aab31130f381302b2","name":"token","value":"eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw","description":""}],"authentication":{},"metaSortKey":-1640315428736.3306,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_c8cc8aca982b4e3e8774c078b8ce9bda","parentId":"wrk_e6e0d0eca2c84d6b8e8f50134e54034b","modified":1704977716587,"created":1704977712834,"url":"https://i7d1qkxdik.execute-api.us-east-1.amazonaws.com/location/11","name":"location/:id","description":"","method":"DELETE","body":{"mimeType":"application/json","text":""},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_b0a265149f9745cab01fe2e0645c3e12"},{"id":"pair_98bc5618dd1a4e3aab31130f381302b2","name":"token","value":"eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw","description":""}],"authentication":{},"metaSortKey":-1640309145252.9153,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"env_8ea408dec4d4b10ed88d3a0f3c922010b858473e","parentId":"wrk_e6e0d0eca2c84d6b8e8f50134e54034b","modified":1653171421209,"created":1653171421209,"name":"Base Environment","data":{},"dataPropertyOrder":null,"color":null,"isPrivate":false,"metaSortKey":1653171421209,"_type":"environment"},{"_id":"jar_8ea408dec4d4b10ed88d3a0f3c922010b858473e","parentId":"wrk_e6e0d0eca2c84d6b8e8f50134e54034b","modified":1653171421210,"created":1653171421210,"name":"Default Jar","cookies":[],"_type":"cookie_jar"},{"_id":"spc_03b260c780504a3795378c920d79f324","parentId":"wrk_e6e0d0eca2c84d6b8e8f50134e54034b","modified":1653171421206,"created":1653171421206,"fileName":"astore","contents":"","contentType":"yaml","_type":"api_spec"}]}
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2024-01-11T12:57:33.210Z",
+  "__export_source": "insomnia.desktop.app:v2022.6.0",
+  "resources": [
+    {
+      "_id": "req_dde0a8023ec444728f3092203e0e309e",
+      "parentId": "wrk_e6e0d0eca2c84d6b8e8f50134e54034b",
+      "modified": 1704975350246,
+      "created": 1667725486561,
+      "url": "https://aw2zxe2ua5.execute-api.us-east-1.amazonaws.com/register",
+      "name": "register",
+      "description": "",
+      "method": "POST",
+      "body": { "mimeType": "application/json", "text": "{\n  \"name\": \"test\",\n\t\"email\": \"testing@testing.com\", \n\t\"password\": \"test1234\"\n}" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json", "id": "pair_b0a265149f9745cab01fe2e0645c3e12" },
+        {
+          "id": "pair_98bc5618dd1a4e3aab31130f381302b2",
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1648345720541.0625,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "wrk_e6e0d0eca2c84d6b8e8f50134e54034b",
+      "parentId": null,
+      "modified": 1653171421205,
+      "created": 1653171421205,
+      "name": "astore",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_79f34bf8e3fd4297884ce67d8a39a2fa",
+      "parentId": "wrk_e6e0d0eca2c84d6b8e8f50134e54034b",
+      "modified": 1704975425306,
+      "created": 1667725057855,
+      "url": "https://aw2zxe2ua5.execute-api.us-east-1.amazonaws.com/login",
+      "name": "login",
+      "description": "",
+      "method": "POST",
+      "body": { "mimeType": "application/json", "text": "{\n\t\"email\": \"testing@testing.com\", \n\t\"password\": \"test1234\"\n}" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json", "id": "pair_b0a265149f9745cab01fe2e0645c3e12" },
+        { "id": "pair_98bc5618dd1a4e3aab31130f381302b2", "name": "token", "value": "", "description": "" }
+      ],
+      "authentication": {},
+      "metaSortKey": -1646737148786.75,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_f9cade355c424aa4b39019e487e7d520",
+      "parentId": "wrk_e6e0d0eca2c84d6b8e8f50134e54034b",
+      "modified": 1704975456297,
+      "created": 1667726755554,
+      "url": "https://aw2zxe2ua5.execute-api.us-east-1.amazonaws.com/user",
+      "name": "user",
+      "description": "",
+      "method": "GET",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json", "id": "pair_b0a265149f9745cab01fe2e0645c3e12" },
+        {
+          "id": "pair_98bc5618dd1a4e3aab31130f381302b2",
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1641911433523.8125,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_29f73b0bf03b46499ab29523e4a45552",
+      "parentId": "wrk_e6e0d0eca2c84d6b8e8f50134e54034b",
+      "modified": 1704977558611,
+      "created": 1704975466952,
+      "url": "https://aw2zxe2ua5.execute-api.us-east-1.amazonaws.com/user",
+      "name": "user",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"ahmed4\",\n  \"email\": \"a.eid4@yandex.com\",\n  \"locations\": [\n    { \"lat\": \"1211\", \"lng\": \"1212\" },\n    { \"lat\": \"1123\", \"lng\": \"2114\" }\n  ]\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json", "id": "pair_b0a265149f9745cab01fe2e0645c3e12" },
+        {
+          "id": "pair_98bc5618dd1a4e3aab31130f381302b2",
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1641107147646.6562,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_20eab1ea2ba046f2a11ae0771a587c2c",
+      "parentId": "wrk_e6e0d0eca2c84d6b8e8f50134e54034b",
+      "modified": 1704977549885,
+      "created": 1704975926654,
+      "url": "https://aw2zxe2ua5.execute-api.us-east-1.amazonaws.com/user/a.eid@yandex.com",
+      "name": "user/:email",
+      "description": "",
+      "method": "PATCH",
+      "body": { "mimeType": "application/json", "text": "{\n  \"name\": \"ahmed22\"\n}" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json", "id": "pair_b0a265149f9745cab01fe2e0645c3e12" },
+        {
+          "id": "pair_98bc5618dd1a4e3aab31130f381302b2",
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1640705004708.0781,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_79360415802c4980b0e4aa191f9059f5",
+      "parentId": "wrk_e6e0d0eca2c84d6b8e8f50134e54034b",
+      "modified": 1704976097854,
+      "created": 1704975978897,
+      "url": "https://aw2zxe2ua5.execute-api.us-east-1.amazonaws.com/user/a.eid@yandex.com",
+      "name": "user/:email",
+      "description": "",
+      "method": "DELETE",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json", "id": "pair_b0a265149f9745cab01fe2e0645c3e12" },
+        {
+          "id": "pair_98bc5618dd1a4e3aab31130f381302b2",
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1640503933238.789,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_31ad62b79cfb447094ef52ede5fcb92b",
+      "parentId": "wrk_e6e0d0eca2c84d6b8e8f50134e54034b",
+      "modified": 1704976104920,
+      "created": 1704976076882,
+      "url": "https://aw2zxe2ua5.execute-api.us-east-1.amazonaws.com/location",
+      "name": "location",
+      "description": "",
+      "method": "GET",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json", "id": "pair_b0a265149f9745cab01fe2e0645c3e12" },
+        {
+          "id": "pair_98bc5618dd1a4e3aab31130f381302b2",
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1640403397504.1445,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_0b12c13b3a0c4bd09e2bce504af4139e",
+      "parentId": "wrk_e6e0d0eca2c84d6b8e8f50134e54034b",
+      "modified": 1704976124133,
+      "created": 1704976119983,
+      "url": "https://aw2zxe2ua5.execute-api.us-east-1.amazonaws.com/location/a.eid@yandex.com",
+      "name": "location/:email",
+      "description": "",
+      "method": "GET",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json", "id": "pair_b0a265149f9745cab01fe2e0645c3e12" },
+        {
+          "id": "pair_98bc5618dd1a4e3aab31130f381302b2",
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1640353129636.8223,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_8b9e10667d0745bd96a78684dd569fa6",
+      "parentId": "wrk_e6e0d0eca2c84d6b8e8f50134e54034b",
+      "modified": 1704977595394,
+      "created": 1704977352421,
+      "url": "https://aw2zxe2ua5.execute-api.us-east-1.amazonaws.com/location/a.eid@yandex.com",
+      "name": "location/:email",
+      "description": "",
+      "method": "POST",
+      "body": { "mimeType": "application/json", "text": "{ \"lat\": \"3234\", \"lng\": \"3234\" }\n" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json", "id": "pair_b0a265149f9745cab01fe2e0645c3e12" },
+        {
+          "id": "pair_98bc5618dd1a4e3aab31130f381302b2",
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1640327995703.1611,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_acfaeba4c5b746f28c02bb4d1d1c5aaf",
+      "parentId": "wrk_e6e0d0eca2c84d6b8e8f50134e54034b",
+      "modified": 1704977710090,
+      "created": 1704977606736,
+      "url": "https://aw2zxe2ua5.execute-api.us-east-1.amazonaws.com/location/11",
+      "name": "location/:id",
+      "description": "",
+      "method": "PATCH",
+      "body": { "mimeType": "application/json", "text": "{ \"lat\": \"2323\", \"lng\": \"2323\" }\n" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json", "id": "pair_b0a265149f9745cab01fe2e0645c3e12" },
+        {
+          "id": "pair_98bc5618dd1a4e3aab31130f381302b2",
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1640315428736.3306,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_c8cc8aca982b4e3e8774c078b8ce9bda",
+      "parentId": "wrk_e6e0d0eca2c84d6b8e8f50134e54034b",
+      "modified": 1704977716587,
+      "created": 1704977712834,
+      "url": "https://aw2zxe2ua5.execute-api.us-east-1.amazonaws.com/location/11",
+      "name": "location/:id",
+      "description": "",
+      "method": "DELETE",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json", "id": "pair_b0a265149f9745cab01fe2e0645c3e12" },
+        {
+          "id": "pair_98bc5618dd1a4e3aab31130f381302b2",
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiJ9.dGVzdGluZ0B0ZXN0aW5nLmNvbQ.CtKF8aMH6DzeXsu2qsaVNRh5tz0zdRGpTIgPAR-yqFw",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1640309145252.9153,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_8ea408dec4d4b10ed88d3a0f3c922010b858473e",
+      "parentId": "wrk_e6e0d0eca2c84d6b8e8f50134e54034b",
+      "modified": 1653171421209,
+      "created": 1653171421209,
+      "name": "Base Environment",
+      "data": {},
+      "dataPropertyOrder": null,
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1653171421209,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_8ea408dec4d4b10ed88d3a0f3c922010b858473e",
+      "parentId": "wrk_e6e0d0eca2c84d6b8e8f50134e54034b",
+      "modified": 1653171421210,
+      "created": 1653171421210,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_03b260c780504a3795378c920d79f324",
+      "parentId": "wrk_e6e0d0eca2c84d6b8e8f50134e54034b",
+      "modified": 1653171421206,
+      "created": 1653171421206,
+      "fileName": "astore",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    }
+  ]
+}

@@ -10,7 +10,9 @@
 
 **given he design above, create a React native app that have the following screens.**
 
-**Please refer back to the insomnia (postman) JSON file..**
+**Please refer back to the insomnia (postman) JSON file...**
+
+**update base URL accordingly if needed.**
 
 ## Auth Screens
 
